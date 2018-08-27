@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Boombap</title>
+	<link rel="stylesheet" href="css/index.css" type="text/css">
+	<link rel="stylesheet" href="css/juggle.css" type="text/css">
+</head>
+
+<body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<header>
+		<div class="login-page">
+			<div class="form login-form">	    		
+      			<input type="text" placeholder="ingrese el patrón" id="number"/>
+				  <!-- <label id="lpromedio"></label> -->
+				<!-- <div id="lpromedio"></div> -->
+      			<input type="text" id="lPromedio" value="" onClick=""/>
+	      		<button id="clickB">Validar</button>
+	      		<!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+	  		</div>
+		</div>		
+	</header>
+
+	<section id="balls">
+		<div class='preload-juggle'>
+			<div class='ball'></div>
+			<div class='ball'></div>
+			<div class='ball'></div>
+		</div>
+	</section>
+
+    <section>
+    	<div class="container">
+    		<div class="sect1 row align-items-center">
+				<!--
+    			<div class="col-lg-6 order-lg-2">
+    				<div class="p-5">
+    					<img class="img1 img-fluid rounded-circle" src="images/01.jpg" alt="">
+					</div>
+				</div>
+				-->
+
+				<div class="p1 col-lg-6 order-lg-1">
+					<div class="p-5">
+						<h2 class="display-4">Númerología consultada</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+            		</div>
+          		</div>
+        	</div>
+      	</div>
+	</section>
+	
+	<script type="text/javascript">
+
+		$("#clickB").click(function() {
+			// alert("Se fuckingpulsó el fuckingboton");
+			
+			// lectura del numero ingresado
+			var numero = $('#number').val();
+			console.log("el numero recibido es: " + numero);
+
+			//Separo el numero y lo convierto a string en un arreglo
+			var numberj = [];
+			var sNumber = numero.toString();
+			var promedio = 0;			
+
+			for(var i = 0; i < sNumber.length; i++){
+				numberj.push(+sNumber.charAt(i));
+				// console.log("Los numeros son: ", numberj);
+			}
+
+			console.log("Los numeros son: ", numberj);
+
+			//Hallar promedio y revisar si el patrón es posible
+			for (var i = 0, suma = 0; i < numberj.length; suma += numberj[i++]);
+			
+			console.log("la suma de los numeros es: ", suma);
+			promedio = suma / sNumber.length;
+			console.log("el promedio de los numeros es: ", promedio);
+
+			// $("#lpromedio").text(promedio);			
+			// document.getElementById('lpromedio').innerHTML = promedio;
+			if (promedio%1 === 0) {
+				//Evalúa si el truco es posible
+				cont=0;
+				var eval = new Array();
+				for (var i = 0; i < numberj.length; i++){
+					//console.log(cont);
+					eval1=numberj[i]+cont;
+					eval2=eval1%numberj.length;
+					// console.log(numberj[i]);
+					//console.log(eval);
+					//console.log(eval2);
+					eval.push(eval2);
+					cont++;				
+				}
+				console.log(eval);
+
+				// Compara si hay un numero repetido dentro de eval
+				function findDuplicates(data) {
+					let result = [];
+					data.forEach(function(element, index) {
+						// Find if there is a duplicate or not
+						if (data.indexOf(element, index + 1) > -1) {
+							// Find if the element is already in the result array or not
+							if (result.indexOf(element) === -1) {
+								result.push(element);
+							}
+						}
+					});
+					return result;
+				}
+
+				dupl=(findDuplicates(eval));
+				console.log(dupl);
+				for (var i = 0, suma = 0; i < dupl.length; suma += dupl[i++]);
+				if(suma >= 1){
+					console.log("RUTINA IMPOSIBLE");
+					document.getElementById('lPromedio').value = "Patrón IMPOSIBLE";
+				}
+				else{
+					document.getElementById('lPromedio').value = "objetos para este truco: " + promedio;
+				}
+			}
+			else{
+				document.getElementById('lPromedio').value = "Patrón IMPOSIBLE";
+			}
+			
+			// Comparar numero anterior
+			/*
+			var ant;
+			for (var i = 0; i < eval.length; i++){
+				if(ant===eval[i]){
+					console.log("Patrón NO VÁLIDO", );
+				}
+				ant=eval[i];
+				//console.log(arrayss[i]);
+				console.log(ant);
+			}
+			*/
+	 	});
+
+	</script>
+	
+</body>
+
+</html>	
