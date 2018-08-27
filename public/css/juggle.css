@@ -1,0 +1,81 @@
+@import "compass/css3";
+
+$boxWidth: 300px;
+$ballWidth: 21px;
+$translateX: 55px;
+$translateY: 57px;
+$time: 2.1s;
+$scale: 1.1;
+
+.balls {
+    background: #16A085;
+}
+  
+.preload-juggle {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    /* margin-top: -400px; */
+    /*margin-top: 5px; */
+    margin-top: -1%;
+    left: 50%;
+    /* margin-left: -40px; */
+    /* margin-left: 145px; */
+    margin-left: 12%;
+}
+
+.preload-juggle div {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    border-radius: 10.5px;
+    background: #1BBC9B;
+    /* margin-top: 10px;
+    margin-left: 10px; */
+    margin-top: 150px;
+    margin-left: 150px;
+    animation: juggle 2.1s linear infinite;
+}
+
+.preload-juggle div:nth-child(1) {
+    animation-delay: -0.7s;
+}
+
+.preload-juggle div:nth-child(2) {
+    animation-delay: -1.4s;
+}
+  
+@keyframes juggle {
+    0% {
+        transform: translateX(0px) translateY(0px);
+    }
+    12.5% {
+        transform: translateX(27.5px) translateY(-57px) scale(1.1);
+        background: #36D7B7;
+    }
+    25% {
+        transform: translateX(55px) translateY(0px);
+        animation-timing-function: ease-out;
+    }
+    37.5% {
+        transform: translateX(27.5px) translateY(57px);
+    }
+    50% {
+        transform: translateX(0px) translateY(0px);
+    }
+    62.5% {
+        transform: translateX(-27.5px) translateY(-57px) scale(1.1);
+        animation-timing-function: ease-in;
+    }
+    75% {
+        transform: translateX(-55px) translateY(0px);
+        animation-timing-function: ease-out;
+    }
+    87.5% {
+        transform: translateX(-27.5px) translateY(57px);
+    }
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+}
